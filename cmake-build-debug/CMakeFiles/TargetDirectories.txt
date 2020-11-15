@@ -1,0 +1,3 @@
+/Users/imahniking-murillo/Documents/CISC Practice/CISC 192/Sentence Framer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/imahniking-murillo/Documents/CISC Practice/CISC 192/Sentence Framer/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/imahniking-murillo/Documents/CISC Practice/CISC 192/Sentence Framer/cmake-build-debug/CMakeFiles/Sentence_Framer.dir

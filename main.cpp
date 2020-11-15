@@ -15,7 +15,6 @@ void sentenceFramer(string sentence) {
             statementActive = false;
         }
     }
-    // loop to counter how many letters there are in the first word
     for (int k = 0; k < letterCounter; k++) {
         cout << "* ";
     }

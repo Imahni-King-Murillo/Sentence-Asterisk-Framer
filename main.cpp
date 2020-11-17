@@ -20,11 +20,17 @@ void sentenceFramer(string sentence)
 {
     bool wordLoopComplete;
     int firstWordLength;
+    int sentencePrinterCounter;
+    int incrementer;
 
     // Verifier to cease loop when firstWordLength has been found
     wordLoopComplete = false;
     // int to store length of the first word in sentence
     firstWordLength = 0;
+    // int to store value that will keep track of letters being printed
+    sentencePrinterCounter = 0;
+    // int to incremenent index limit of for loop dynamically
+    incrementer = 1;
 
     // Loop to find length of first word in sentence
     for (int index = 0; index < sentence.length(); index++)
@@ -45,13 +51,12 @@ void sentenceFramer(string sentence)
     // Return line
     cout << endl;
 
-    // Loop to print sentence contents
-    for (int indexOne = 0; indexOne < 3; indexOne++)
+    while (sentencePrinterCounter <= sentence.length())
     {
         // Print asterisk BEFORE the word
         cout << "*";
         // Print firstWordLength letters
-        for (int indexTwo = 0; indexTwo < firstWordLength; indexTwo++)
+        for (int indexTwo = sentencePrinterCounter; indexTwo < (firstWordLength * incrementer); indexTwo++)
         {
             // If character is not a space
             if (sentence[indexTwo] != ' ')

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <math.h>
 
 using namespace std;
 
@@ -19,18 +20,18 @@ Output =
 void sentenceFramer(string sentence)
 {
     bool wordLoopComplete;
-    int firstWordLength;
-    int sentencePrinterCounter;
+    double firstWordLength;
     int incrementer;
+    double rowNumber;
+    string spacelessSentence;
+    string row;
 
     // Verifier to cease loop when firstWordLength has been found
     wordLoopComplete = false;
     // int to store length of the first word in sentence
     firstWordLength = 0;
-    // int to store value that will keep track of letters being printed
-    sentencePrinterCounter = 0;
     // int to incremenent index limit of for loop dynamically
-    incrementer = 1;
+    incrementer = 0;
 
     // Loop to find length of first word in sentence
     for (int index = 0; index < sentence.length(); index++)
@@ -51,20 +52,44 @@ void sentenceFramer(string sentence)
     // Return line
     cout << endl;
 
-    while (sentencePrinterCounter <= sentence.length())
+    // Loop to create new sentence with no spaces
+    for (int index = 0; index < sentence.length(); index++)
+    {
+        if (sentence[index] != ' ')
+            spacelessSentence += sentence[index];
+    };
+
+    // Create the number of rows for the frame
+    rowNumber = spacelessSentence.length() / firstWordLength;
+
+    // Loop to display the sentence in a frame
+    for (int indexOne = 0; indexOne < ceil(rowNumber); indexOne++)
     {
         // Print asterisk BEFORE the word
         cout << "*";
         // Print firstWordLength letters
-        for (int indexTwo = sentencePrinterCounter; indexTwo < (firstWordLength * incrementer); indexTwo++)
+        for (int indexTwo = incrementer; indexTwo < (firstWordLength * (indexOne + 1)); indexTwo++)
         {
-            // If character is not a space
-            if (sentence[indexTwo] != ' ')
-                // Print letter
-                cout << sentence[indexTwo];
+            if (spacelessSentence[indexTwo] != ' ')
+                row += spacelessSentence[indexTwo];
         };
+        int rowRemainder = firstWordLength - row.length();
+        if (rowRemainder > 0)
+        {
+            cout << row;
+            for (int index = 0; index < rowRemainder; index++)
+            {
+                cout << "*";
+            }
+        }
+        else
+        {
+            cout << row;
+        }
         // Print asterisk AFTER the word
         cout << "*" << endl;
+        row.clear();
+        incrementer += (firstWordLength);
     };
 
     // Loop to print last row of asterisks
